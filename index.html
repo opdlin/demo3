@@ -1,0 +1,1663 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATELIER VERVE | Corporate Interior Architecture & Turnkey Contracting</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        charcoal: {
+                            950: '#0B0F19',
+                            900: '#111827',
+                            800: '#1F2937',
+                            700: '#374151',
+                        },
+                        gold: {
+                            400: '#E2B842',
+                            500: '#C59B27',
+                            600: '#A67F1A',
+                        }
+                    },
+                    backgroundImage: {
+                        'arch-grid': "linear-gradient(to right, rgba(197, 155, 39, 0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(197, 155, 39, 0.06) 1px, transparent 1px)",
+                        'arch-grid-dark': "linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px)",
+                    },
+                    backgroundSize: {
+                        'grid-40': '40px 40px',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Subtle Architectural Animations & Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111827;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #374151;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #C59B27;
+        }
+
+        .hero-slide {
+            transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1), transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .hero-slide-active {
+            opacity: 1;
+            z-index: 10;
+            pointer-events: auto;
+        }
+        .hero-slide-inactive {
+            opacity: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .hero-bg-zoom {
+            transition: transform 8s ease-out;
+        }
+        .hero-slide-active .hero-bg-zoom {
+            transform: scale(1.06);
+        }
+
+        /* Fade in on scroll utility */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: all 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-white text-charcoal-900 antialiased selection:bg-gold-500 selection:text-white overflow-x-hidden">
+
+    <!-- =====================================================================
+         1. STICKY ARCHITECTURAL NAVIGATION BAR
+    ====================================================================== -->
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-charcoal-900/90 backdrop-blur-md border-b border-white/10">
+        <!-- Top Utility Info Bar (Desktop) -->
+        <div class="hidden lg:block bg-charcoal-950 text-gray-400 text-xs border-b border-white/5">
+            <div class="max-w-7xl mx-auto px-6 py-2 flex justify-between items-center">
+                <div class="flex items-center space-x-6">
+                    <span class="flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-gold-500"></i> New Delhi (HQ) • Mumbai • Bengaluru • Chennai</span>
+                    <span class="flex items-center gap-1.5"><i data-lucide="award" class="w-3.5 h-3.5 text-gold-500"></i> ISO 9001 • 14001 • 45001 Certified</span>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <a href="tel:+911141678900" class="hover:text-gold-400 transition flex items-center gap-1.5"><i data-lucide="phone" class="w-3.5 h-3.5 text-gold-500"></i> +91 (11) 4167-8900</a>
+                    <a href="mailto:projects@atelierverve.in" class="hover:text-gold-400 transition flex items-center gap-1.5"><i data-lucide="mail" class="w-3.5 h-3.5 text-gold-500"></i> projects@atelierverve.in</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Navigation Container -->
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Monogram & Wordmark -->
+            <a href="#home" class="flex items-center gap-3 group">
+                <div class="w-11 h-11 rounded-lg bg-gradient-to-br from-gold-500 to-gold-600 p-0.5 shadow-lg shadow-gold-500/20 group-hover:scale-105 transition-transform">
+                    <div class="w-full h-full bg-charcoal-900 rounded-[7px] flex items-center justify-center">
+                        <!-- Custom Architectural SVG Monogram -->
+                        <svg class="w-6 h-6 text-gold-500" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16 3L28 27H22.5L16 13.5L9.5 27H4L16 3Z" fill="currentColor"/>
+                            <path d="M11 21H21" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square"/>
+                            <rect x="3" y="3" width="26" height="26" stroke="currentColor" stroke-opacity="0.35" stroke-width="1"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-display font-extrabold text-xl tracking-wider text-white leading-none">ATELIER <span class="text-gold-500">VERVE</span></span>
+                    <span class="text-[10px] uppercase tracking-[0.22em] text-gray-400 mt-1">Design • Build • Turnkey</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <div class="hidden xl:flex items-center space-x-7 text-sm font-medium text-gray-200">
+                <a href="#home" class="hover:text-gold-400 transition py-2">Home</a>
+                <a href="#about" class="hover:text-gold-400 transition py-2">About</a>
+                <a href="#why-us" class="hover:text-gold-400 transition py-2">Why Us</a>
+                <a href="#services" class="hover:text-gold-400 transition py-2">Services</a>
+                <a href="#projects" class="hover:text-gold-400 transition py-2">Projects</a>
+                <a href="#clients" class="hover:text-gold-400 transition py-2">Clients</a>
+                <a href="#testimonials" class="hover:text-gold-400 transition py-2">Testimonials</a>
+                <a href="#certifications" class="hover:text-gold-400 transition py-2">Certifications</a>
+                <a href="#contact" class="hover:text-gold-400 transition py-2">Contact Us</a>
+            </div>
+
+            <!-- Right CTA & Mobile Drawer Trigger -->
+            <div class="flex items-center gap-3">
+                <button onclick="openQuoteModal()" class="hidden sm:inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-400 text-charcoal-950 font-display font-bold text-sm px-5 py-2.5 rounded-lg shadow-lg shadow-gold-500/20 transition-all duration-200 hover:-translate-y-0.5 cursor-pointer">
+                    <span>Start a Project</span>
+                    <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                </button>
+
+                <!-- Hamburger Menu Button -->
+                <button id="mobile-menu-btn" aria-label="Open Navigation Menu" class="xl:hidden p-2.5 rounded-lg text-gray-200 hover:text-white hover:bg-white/10 transition">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobile-drawer" class="hidden xl:hidden bg-charcoal-900 border-t border-white/10 px-6 py-6 space-y-4 shadow-2xl">
+            <div class="grid grid-cols-2 gap-3 text-sm font-medium text-gray-200">
+                <a href="#home" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-white/5 hover:text-gold-400">Home</a>
+                <a href="#about" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-white/5 hover:text-gold-400">About Us</a>
+                <a href="#why-us" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-white/5 hover:text-gold-400">Why Us</a>
+                <a href="#services" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-white/5 hover:text-gold-400">Services</a>
+                <a href="#projects" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-white/5 hover:text-gold-400">Projects</a>
+                <a href="#clients" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-white/5 hover:text-gold-400">Clients</a>
+                <a href="#testimonials" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-white/5 hover:text-gold-400">Testimonials</a>
+                <a href="#certifications" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-white/5 hover:text-gold-400">Certifications</a>
+                <a href="#contact" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-white/5 hover:text-gold-400 col-span-2">Contact Us</a>
+            </div>
+            <div class="pt-3 border-t border-white/10">
+                <button onclick="openQuoteModal(); toggleMobileDrawer();" class="w-full flex items-center justify-center gap-2 bg-gold-500 hover:bg-gold-400 text-charcoal-950 font-display font-bold text-sm px-5 py-3 rounded-lg transition">
+                    <span>Start a Project</span>
+                    <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- =====================================================================
+         2. FULL-SCREEN INTERACTIVE HERO CAROUSEL (SLIDER)
+    ====================================================================== -->
+    <section id="home" class="relative w-full h-screen min-h-[680px] max-h-[960px] bg-charcoal-950 overflow-hidden pt-20">
+        <!-- Subtle Architectural Grid Overlay -->
+        <div class="absolute inset-0 bg-arch-grid-dark bg-grid-40 z-20 pointer-events-none"></div>
+
+        <!-- Slide 1 -->
+        <div class="hero-slide hero-slide-active absolute inset-0" data-slide="0">
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=2000&q=85"
+                 onerror="this.src='https://placehold.co/1920x1080/111827/C59B27?text=Iconic+Corporate+Workspaces'"
+                 alt="Modern Executive Corporate Office Interior"
+                 class="hero-bg-zoom w-full h-full object-cover object-center">
+            <div class="absolute inset-0 bg-gradient-to-r from-charcoal-950/95 via-charcoal-900/75 to-charcoal-950/35"></div>
+            <div class="relative z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col justify-center">
+                <div class="max-w-3xl">
+                    <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/10 border border-gold-500/40 backdrop-blur-md text-gold-400 text-xs font-semibold uppercase tracking-widest mb-6">
+                        <span class="w-2 h-2 rounded-full bg-gold-500 animate-pulse"></span>
+                        Turnkey Interior Architecture & Execution
+                    </div>
+                    <h1 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.12] tracking-tight mb-6">
+                        Transforming Spaces Into <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold-400 to-amber-200">Iconic Workplaces</span>
+                    </h1>
+                    <p class="text-gray-300 text-base sm:text-lg lg:text-xl leading-relaxed mb-9 max-w-2xl font-light">
+                        End-to-end Design & Build excellence across India & globally. We craft human-centric corporate headquarters, innovation hubs, and institutional environments with precision.
+                    </p>
+                    <div class="flex flex-wrap items-center gap-4">
+                        <a href="#projects" class="inline-flex items-center gap-2.5 bg-gold-500 hover:bg-gold-400 text-charcoal-950 font-display font-bold px-7 py-4 rounded-xl shadow-xl shadow-gold-500/20 transition-all hover:-translate-y-0.5">
+                            <span>Explore Portfolio</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                        <a href="#services" class="inline-flex items-center gap-2.5 bg-white/10 hover:bg-white/15 text-white border border-white/20 backdrop-blur-md font-display font-semibold px-7 py-4 rounded-xl transition-all">
+                            <span>Our Capabilities</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="hero-slide hero-slide-inactive absolute inset-0" data-slide="1">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=85"
+                 onerror="this.src='https://placehold.co/1920x1080/111827/C59B27?text=Precision+Engineering'"
+                 alt="Luxury Commercial Architecture & Atrium"
+                 class="hero-bg-zoom w-full h-full object-cover object-center">
+            <div class="absolute inset-0 bg-gradient-to-r from-charcoal-950/95 via-charcoal-900/75 to-charcoal-950/35"></div>
+            <div class="relative z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col justify-center">
+                <div class="max-w-3xl">
+                    <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/10 border border-gold-500/40 backdrop-blur-md text-gold-400 text-xs font-semibold uppercase tracking-widest mb-6">
+                        <span class="w-2 h-2 rounded-full bg-gold-500"></span>
+                        20+ Million Sq.Ft. Delivered Nationwide
+                    </div>
+                    <h2 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.12] tracking-tight mb-6">
+                        Precision Engineering Meets <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold-400 to-amber-200">Architectural Vision</span>
+                    </h2>
+                    <p class="text-gray-300 text-base sm:text-lg lg:text-xl leading-relaxed mb-9 max-w-2xl font-light">
+                        Over 20 Million Sq.Ft. delivered with zero-compromise quality across Fortune 500 enterprises, premier healthcare centers, and diplomatic missions.
+                    </p>
+                    <div class="flex flex-wrap items-center gap-4">
+                        <a href="#projects" class="inline-flex items-center gap-2.5 bg-gold-500 hover:bg-gold-400 text-charcoal-950 font-display font-bold px-7 py-4 rounded-xl shadow-xl shadow-gold-500/20 transition-all hover:-translate-y-0.5">
+                            <span>Explore Portfolio</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                        <a href="#services" class="inline-flex items-center gap-2.5 bg-white/10 hover:bg-white/15 text-white border border-white/20 backdrop-blur-md font-display font-semibold px-7 py-4 rounded-xl transition-all">
+                            <span>Our Capabilities</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="hero-slide hero-slide-inactive absolute inset-0" data-slide="2">
+            <img src="https://images.unsplash.com/photo-1497215842964-222b430dc094?auto=format&fit=crop&w=2000&q=85"
+                 onerror="this.src='https://placehold.co/1920x1080/111827/C59B27?text=Smart+Agile+Workspaces'"
+                 alt="Smart Boardroom and AV Integrated Workspace"
+                 class="hero-bg-zoom w-full h-full object-cover object-center">
+            <div class="absolute inset-0 bg-gradient-to-r from-charcoal-950/95 via-charcoal-900/75 to-charcoal-950/35"></div>
+            <div class="relative z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col justify-center">
+                <div class="max-w-3xl">
+                    <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/10 border border-gold-500/40 backdrop-blur-md text-gold-400 text-xs font-semibold uppercase tracking-widest mb-6">
+                        <span class="w-2 h-2 rounded-full bg-gold-500"></span>
+                        In-House MEP, Acoustics & Smart AV
+                    </div>
+                    <h2 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.12] tracking-tight mb-6">
+                        Smart, Agile & <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold-400 to-amber-200">Future-Ready Environments</span>
+                    </h2>
+                    <p class="text-gray-300 text-base sm:text-lg lg:text-xl leading-relaxed mb-9 max-w-2xl font-light">
+                        Integrated MEP engineering, intelligent lighting, acoustic mastery, and enterprise multimedia automation built under one accountable roof.
+                    </p>
+                    <div class="flex flex-wrap items-center gap-4">
+                        <a href="#projects" class="inline-flex items-center gap-2.5 bg-gold-500 hover:bg-gold-400 text-charcoal-950 font-display font-bold px-7 py-4 rounded-xl shadow-xl shadow-gold-500/20 transition-all hover:-translate-y-0.5">
+                            <span>Explore Portfolio</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                        <a href="#services" class="inline-flex items-center gap-2.5 bg-white/10 hover:bg-white/15 text-white border border-white/20 backdrop-blur-md font-display font-semibold px-7 py-4 rounded-xl transition-all">
+                            <span>Our Capabilities</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Carousel Bottom Controls Bar -->
+        <div class="absolute bottom-8 left-0 right-0 z-30">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between gap-4">
+                <!-- Slide Indicators -->
+                <div class="flex items-center gap-3">
+                    <button onclick="goToSlide(0)" class="slide-dot w-12 h-1.5 rounded-full bg-gold-500 transition-all cursor-pointer" aria-label="Slide 1"></button>
+                    <button onclick="goToSlide(1)" class="slide-dot w-6 h-1.5 rounded-full bg-white/30 hover:bg-white/60 transition-all cursor-pointer" aria-label="Slide 2"></button>
+                    <button onclick="goToSlide(2)" class="slide-dot w-6 h-1.5 rounded-full bg-white/30 hover:bg-white/60 transition-all cursor-pointer" aria-label="Slide 3"></button>
+                    <span id="slide-counter" class="text-xs font-mono text-gray-300 ml-2">01 / 03</span>
+                </div>
+
+                <!-- Prev / Next / Auto-Play Controls -->
+                <div class="flex items-center gap-2">
+                    <button id="autoplay-toggle" onclick="toggleAutoplay()" title="Toggle Auto-Advance" class="p-3 rounded-xl bg-white/10 hover:bg-white/20 text-white border border-white/15 backdrop-blur-md transition cursor-pointer">
+                        <i id="autoplay-icon" data-lucide="pause" class="w-4 h-4"></i>
+                    </button>
+                    <button onclick="prevSlide()" aria-label="Previous Slide" class="p-3 rounded-xl bg-white/10 hover:bg-gold-500 hover:text-charcoal-950 text-white border border-white/15 backdrop-blur-md transition cursor-pointer">
+                        <i data-lucide="chevron-left" class="w-5 h-5"></i>
+                    </button>
+                    <button onclick="nextSlide()" aria-label="Next Slide" class="p-3 rounded-xl bg-white/10 hover:bg-gold-500 hover:text-charcoal-950 text-white border border-white/15 backdrop-blur-md transition cursor-pointer">
+                        <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================================
+         3. ABOUT US / WELCOME SECTION
+    ====================================================================== -->
+    <section id="about" class="py-24 lg:py-32 bg-white bg-arch-grid bg-grid-40 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                <!-- Left Column: Architectural Image Collage -->
+                <div class="lg:col-span-6 relative reveal">
+                    <div class="grid grid-cols-12 gap-4 items-end">
+                        <div class="col-span-7">
+                            <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=900&q=85"
+                                 onerror="this.src='https://placehold.co/600x750/1F2937/FFFFFF?text=Architectural+Design'"
+                                 alt="Contemporary Executive Lounge"
+                                 class="w-full h-[380px] sm:h-[440px] object-cover rounded-2xl shadow-2xl border border-gray-100">
+                        </div>
+                        <div class="col-span-5 space-y-4">
+                            <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=700&q=85"
+                                 onerror="this.src='https://placehold.co/500x400/111827/C59B27?text=Turnkey+Workspace'"
+                                 alt="Collaborative Tech Office"
+                                 class="w-full h-48 sm:h-56 object-cover rounded-2xl shadow-xl border border-gray-100">
+                            <div class="bg-charcoal-900 text-white p-5 rounded-2xl border border-charcoal-800 shadow-xl">
+                                <p class="text-gold-400 font-display font-extrabold text-2xl">Pan-India</p>
+                                <p class="text-xs text-gray-300 mt-1 leading-relaxed">Active site execution across 28+ cities with centralized quality governance.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Floating Badge -->
+                    <div class="mt-6 sm:mt-0 sm:absolute sm:-bottom-6 sm:left-6 bg-white border border-gray-200 shadow-2xl rounded-2xl px-6 py-4 flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-gold-500/15 text-gold-600 flex items-center justify-center shrink-0">
+                            <i data-lucide="compass" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <p class="font-display font-extrabold text-charcoal-900 text-base">Est. 2010 • 300+ Specialists</p>
+                            <p class="text-xs text-gray-500">Architects, MEP Engineers & Project Managers</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Corporate Narrative -->
+                <div class="lg:col-span-6 reveal">
+                    <div class="inline-flex items-center gap-2 text-gold-600 font-display font-bold text-xs uppercase tracking-[0.2em] mb-3">
+                        <span class="w-8 h-[2px] bg-gold-500"></span>
+                        Welcome to Atelier Verve
+                    </div>
+                    <h2 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-[42px] text-charcoal-900 leading-tight mb-6">
+                        Single-Point Accountability From Blueprint to Handover
+                    </h2>
+                    <p class="text-gray-600 text-base sm:text-lg leading-relaxed mb-5">
+                        Founded in 2010, <strong class="text-charcoal-900 font-semibold">Atelier Verve Design & Build Pvt. Ltd.</strong> is one of India’s premier corporate interior architecture, general contracting, and turnkey execution firms. We bridge the gap between visionary spatial design and rigorous engineering execution.
+                    </p>
+                    <p class="text-gray-600 text-base leading-relaxed mb-8">
+                        With our Corporate Headquarters in <strong class="text-charcoal-900 font-semibold">New Delhi</strong> and full-fledged regional hubs in <strong class="text-charcoal-900 font-semibold">Mumbai, Bengaluru, and Chennai</strong>, our multidisciplinary teams deliver high-performance workplaces, healthcare facilities, diplomatic enclaves, and flagship retail spaces on aggressive timelines.
+                    </p>
+
+                    <!-- Key Highlights Grid -->
+                    <div class="grid sm:grid-cols-2 gap-4 mb-8">
+                        <div class="flex items-start gap-3 p-4 rounded-xl bg-gray-50 border border-gray-100">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-gold-600 shrink-0 mt-0.5"></i>
+                            <div>
+                                <h4 class="font-display font-bold text-sm text-charcoal-900">End-to-End Turnkey Mastery</h4>
+                                <p class="text-xs text-gray-500 mt-1">Concept design, statutory approvals, civil, MEP, AV, and bespoke millwork.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3 p-4 rounded-xl bg-gray-50 border border-gray-100">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-gold-600 shrink-0 mt-0.5"></i>
+                            <div>
+                                <h4 class="font-display font-bold text-sm text-charcoal-900">Fast-Track Delivery</h4>
+                                <p class="text-xs text-gray-500 mt-1">BIM-led scheduling & modular off-site fabrication for zero-delay handovers.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-4">
+                        <button onclick="openQuoteModal()" class="inline-flex items-center gap-2 bg-charcoal-900 hover:bg-charcoal-800 text-white font-display font-semibold text-sm px-6 py-3.5 rounded-xl transition cursor-pointer">
+                            <span>Schedule a Consultation</span>
+                            <i data-lucide="calendar" class="w-4 h-4 text-gold-400"></i>
+                        </button>
+                        <a href="#why-us" class="inline-flex items-center gap-2 text-charcoal-900 hover:text-gold-600 font-display font-bold text-sm px-4 py-3 transition">
+                            <span>Discover Our Philosophy</span>
+                            <i data-lucide="arrow-down-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================================
+         4. "WHY US?" THREE-PILLAR INTERACTIVE CARDS
+    ====================================================================== -->
+    <section id="why-us" class="py-24 bg-charcoal-900 text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-arch-grid-dark bg-grid-40 pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <!-- Section Header -->
+            <div class="max-w-3xl mx-auto text-center mb-16 reveal">
+                <div class="inline-flex items-center gap-2 text-gold-400 font-display font-bold text-xs uppercase tracking-[0.2em] mb-3">
+                    <span class="w-6 h-[2px] bg-gold-500"></span>
+                    The Atelier Verve Advantage
+                    <span class="w-6 h-[2px] bg-gold-500"></span>
+                </div>
+                <h2 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white mb-4">
+                    Why Leading Enterprises Partner With Us
+                </h2>
+                <p class="text-gray-400 text-base sm:text-lg">
+                    We combine architectural artistry with ISO-certified project governance to de-risk complex interior fit-outs.
+                </p>
+            </div>
+
+            <!-- 3 Pillar Cards -->
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Pillar 1 -->
+                <div class="group bg-charcoal-800/70 backdrop-blur-sm border border-white/10 hover:border-gold-500/50 rounded-2xl p-8 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between reveal">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-gold-500/15 border border-gold-500/30 text-gold-400 flex items-center justify-center mb-6 group-hover:bg-gold-500 group-hover:text-charcoal-950 transition-colors">
+                            <i data-lucide="layers" class="w-7 h-7"></i>
+                        </div>
+                        <span class="text-xs font-mono uppercase tracking-widest text-gold-400">01 / Differentiation</span>
+                        <h3 class="font-display font-bold text-2xl text-white mt-2 mb-4">Why Choose Us</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed mb-6">
+                            Innovating corporate interior spaces through human-centric design thinking, BIM 3D clash detection, and cutting-edge construction technology that eliminates cost overruns.
+                        </p>
+                    </div>
+                    <button onclick="openPillarModal('choose')" class="inline-flex items-center gap-2 text-gold-400 hover:text-gold-300 font-display font-semibold text-sm pt-4 border-t border-white/10 cursor-pointer group/btn">
+                        <span>View Details</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 group-hover/btn:translate-x-1 transition-transform"></i>
+                    </button>
+                </div>
+
+                <!-- Pillar 2 -->
+                <div class="group bg-charcoal-800/70 backdrop-blur-sm border border-white/10 hover:border-gold-500/50 rounded-2xl p-8 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between reveal">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-gold-500/15 border border-gold-500/30 text-gold-400 flex items-center justify-center mb-6 group-hover:bg-gold-500 group-hover:text-charcoal-950 transition-colors">
+                            <i data-lucide="eye" class="w-7 h-7"></i>
+                        </div>
+                        <span class="text-xs font-mono uppercase tracking-widest text-gold-400">02 / Direction</span>
+                        <h3 class="font-display font-bold text-2xl text-white mt-2 mb-4">Vision & Mission</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed mb-6">
+                            Built on radical transparency, uncompromising craftsmanship, and a mission to elevate organizational brand identity and employee wellbeing through inspiring physical spaces.
+                        </p>
+                    </div>
+                    <button onclick="openPillarModal('vision')" class="inline-flex items-center gap-2 text-gold-400 hover:text-gold-300 font-display font-semibold text-sm pt-4 border-t border-white/10 cursor-pointer group/btn">
+                        <span>View Details</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 group-hover/btn:translate-x-1 transition-transform"></i>
+                    </button>
+                </div>
+
+                <!-- Pillar 3 -->
+                <div class="group bg-charcoal-800/70 backdrop-blur-sm border border-white/10 hover:border-gold-500/50 rounded-2xl p-8 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between reveal">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-gold-500/15 border border-gold-500/30 text-gold-400 flex items-center justify-center mb-6 group-hover:bg-gold-500 group-hover:text-charcoal-950 transition-colors">
+                            <i data-lucide="shield-check" class="w-7 h-7"></i>
+                        </div>
+                        <span class="text-xs font-mono uppercase tracking-widest text-gold-400">03 / Ethos</span>
+                        <h3 class="font-display font-bold text-2xl text-white mt-2 mb-4">Core Values</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed mb-6">
+                            Agile cross-functional collaboration, zero-incident safety-first site execution, and sustainable LEED/WELL-aligned turnkey delivery that respects your timelines and budget.
+                        </p>
+                    </div>
+                    <button onclick="openPillarModal('values')" class="inline-flex items-center gap-2 text-gold-400 hover:text-gold-300 font-display font-semibold text-sm pt-4 border-t border-white/10 cursor-pointer group/btn">
+                        <span>View Details</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 group-hover/btn:translate-x-1 transition-transform"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================================
+         5. CORE SERVICES GRID (4 PILLARS WITH INTERACTIVE DETAIL TABS)
+    ====================================================================== -->
+    <section id="services" class="py-24 lg:py-32 bg-gray-50 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-14 gap-6 reveal">
+                <div>
+                    <div class="inline-flex items-center gap-2 text-gold-600 font-display font-bold text-xs uppercase tracking-[0.2em] mb-3">
+                        <span class="w-8 h-[2px] bg-gold-500"></span>
+                        Integrated Capabilities
+                    </div>
+                    <h2 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-charcoal-900">
+                        Four Pillars of Turnkey Excellence
+                    </h2>
+                </div>
+                <p class="text-gray-600 max-w-md text-sm sm:text-base">
+                    Select any discipline below to inspect our scope of deliverables, engineering standards, and execution methodology.
+                </p>
+            </div>
+
+            <!-- 4 Interactive Service Cards -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10 reveal">
+                <button onclick="selectService(0)" id="srv-card-0" class="service-tab-card text-left p-6 rounded-2xl bg-charcoal-900 text-white border-2 border-gold-500 shadow-xl transition-all cursor-pointer">
+                    <div class="w-12 h-12 rounded-xl bg-gold-500 text-charcoal-950 flex items-center justify-center mb-5">
+                        <i data-lucide="pen-tool" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-xl mb-2">Design & Build</h3>
+                    <p class="text-xs text-gray-300 leading-relaxed">Modern, agile workspaces crafted seamlessly from concept architecture to final handover.</p>
+                </button>
+
+                <button onclick="selectService(1)" id="srv-card-1" class="service-tab-card text-left p-6 rounded-2xl bg-white text-charcoal-900 border border-gray-200 hover:border-gold-500/60 shadow-sm hover:shadow-lg transition-all cursor-pointer">
+                    <div class="w-12 h-12 rounded-xl bg-gray-100 text-charcoal-900 flex items-center justify-center mb-5">
+                        <i data-lucide="hard-hat" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-xl mb-2">General Contracting</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed">Precision execution of complex architectural blueprints with strict cost & quality governance.</p>
+                </button>
+
+                <button onclick="selectService(2)" id="srv-card-2" class="service-tab-card text-left p-6 rounded-2xl bg-white text-charcoal-900 border border-gray-200 hover:border-gold-500/60 shadow-sm hover:shadow-lg transition-all cursor-pointer">
+                    <div class="w-12 h-12 rounded-xl bg-gray-100 text-charcoal-900 flex items-center justify-center mb-5">
+                        <i data-lucide="cpu" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-xl mb-2">MEP Services</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed">In-house Mechanical, Electrical & Plumbing engineering covering active & passive systems.</p>
+                </button>
+
+                <button onclick="selectService(3)" id="srv-card-3" class="service-tab-card text-left p-6 rounded-2xl bg-white text-charcoal-900 border border-gray-200 hover:border-gold-500/60 shadow-sm hover:shadow-lg transition-all cursor-pointer">
+                    <div class="w-12 h-12 rounded-xl bg-gray-100 text-charcoal-900 flex items-center justify-center mb-5">
+                        <i data-lucide="monitor-speaker" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-xl mb-2">Multimedia & Tech</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed">Smart AV integration, acoustic engineering, and automated workplace intelligence.</p>
+                </button>
+            </div>
+
+            <!-- Interactive Service Detail Panel -->
+            <div id="service-detail-panel" class="bg-white rounded-3xl border border-gray-200 shadow-xl overflow-hidden reveal">
+                <div class="grid lg:grid-cols-12">
+                    <div class="lg:col-span-7 p-8 sm:p-10 lg:p-12 flex flex-col justify-between">
+                        <div>
+                            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold-500/10 text-gold-600 font-semibold text-xs uppercase tracking-wider mb-4" id="srv-badge">
+                                Turnkey Solutions
+                            </div>
+                            <h3 class="font-display font-extrabold text-2xl sm:text-3xl text-charcoal-900 mb-4" id="srv-title">
+                                Integrated Design & Build Delivery
+                            </h3>
+                            <p class="text-gray-600 text-base leading-relaxed mb-6" id="srv-desc">
+                                Our Design & Build model unifies architectural creativity, interior styling, value engineering, and on-site construction under a single contract—compressing project schedules by up to 30% while guaranteeing budget certainty.
+                            </p>
+
+                            <div class="grid sm:grid-cols-2 gap-3.5 mb-8" id="srv-bullets">
+                                <!-- Populated via JS -->
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-gray-100">
+                            <div class="text-xs text-gray-500">
+                                <span class="font-semibold text-charcoal-900">Compliance:</span> NBC, ASHRAE, LEED & WELL Standards
+                            </div>
+                            <button onclick="openQuoteModal()" class="inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-400 text-charcoal-950 font-display font-bold text-xs uppercase tracking-wider px-5 py-3 rounded-xl transition cursor-pointer">
+                                <span>Request Technical Brief</span>
+                                <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-5 relative min-h-[280px] lg:min-h-full bg-charcoal-900">
+                        <img id="srv-img"
+                             src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1000&q=85"
+                             onerror="this.src='https://placehold.co/800x600/111827/C59B27?text=Design+%26+Build'"
+                             alt="Service Showcase"
+                             class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-charcoal-950/80 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 right-6 text-white">
+                            <p class="text-xs uppercase tracking-widest text-gold-400 font-semibold" id="srv-metric-label">Average Schedule Savings</p>
+                            <p class="font-display font-extrabold text-2xl mt-0.5" id="srv-metric-value">Up to 30% Faster Handover</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================================
+         6. FEATURED PROJECTS SHOWCASE (FILTERABLE PORTFOLIO PREVIEW)
+    ====================================================================== -->
+    <section id="projects" class="py-24 lg:py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 reveal">
+                <div>
+                    <div class="inline-flex items-center gap-2 text-gold-600 font-display font-bold text-xs uppercase tracking-[0.2em] mb-3">
+                        <span class="w-8 h-[2px] bg-gold-500"></span>
+                        Selected Works
+                    </div>
+                    <h2 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-charcoal-900">
+                        Landmark Projects Delivered
+                    </h2>
+                </div>
+
+                <!-- Category Filter Pills -->
+                <div class="flex flex-wrap gap-2" id="project-filters">
+                    <button onclick="filterProjects('all')" data-filter="all" class="filter-btn active px-4 py-2.5 rounded-xl text-xs font-display font-bold uppercase tracking-wider bg-charcoal-900 text-white transition cursor-pointer">
+                        All Projects
+                    </button>
+                    <button onclick="filterProjects('corporate')" data-filter="corporate" class="filter-btn px-4 py-2.5 rounded-xl text-xs font-display font-bold uppercase tracking-wider bg-gray-100 text-gray-700 hover:bg-gray-200 transition cursor-pointer">
+                        Corporate Offices
+                    </button>
+                    <button onclick="filterProjects('healthcare')" data-filter="healthcare" class="filter-btn px-4 py-2.5 rounded-xl text-xs font-display font-bold uppercase tracking-wider bg-gray-100 text-gray-700 hover:bg-gray-200 transition cursor-pointer">
+                        Healthcare & Institutional
+                    </button>
+                    <button onclick="filterProjects('retail')" data-filter="retail" class="filter-btn px-4 py-2.5 rounded-xl text-xs font-display font-bold uppercase tracking-wider bg-gray-100 text-gray-700 hover:bg-gray-200 transition cursor-pointer">
+                        Retail & Hospitality
+                    </button>
+                </div>
+            </div>
+
+            <!-- Projects Grid -->
+            <div id="projects-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Populated & filtered dynamically via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================================
+         7. "FACTS & MILESTONES" ANIMATED COUNTER BANNER
+    ====================================================================== -->
+    <section id="milestones" class="relative py-24 bg-charcoal-950 text-white overflow-hidden">
+        <!-- Parallax-style Background Image -->
+        <div class="absolute inset-0">
+            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2000&q=80"
+                 onerror="this.src='https://placehold.co/1920x800/0B0F19/1F2937?text=Architectural+Scale'"
+                 alt="Corporate Skyscraper Architecture"
+                 class="w-full h-full object-cover opacity-20">
+            <div class="absolute inset-0 bg-gradient-to-r from-charcoal-950 via-charcoal-950/90 to-charcoal-950"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+                <span class="text-gold-400 font-display font-bold text-xs uppercase tracking-[0.25em]">Scale & Track Record</span>
+                <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white mt-2">
+                    Numbers That Define Our Legacy
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+                <!-- Stat 1 -->
+                <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 sm:p-8 text-center hover:border-gold-500/40 transition reveal">
+                    <div class="w-12 h-12 mx-auto rounded-xl bg-gold-500/15 text-gold-400 flex items-center justify-center mb-4">
+                        <i data-lucide="maximize-2" class="w-6 h-6"></i>
+                    </div>
+                    <div class="font-display font-extrabold text-3xl sm:text-5xl text-white">
+                        <span class="counter" data-target="20">0</span><span class="text-gold-400">M+</span>
+                    </div>
+                    <p class="text-gray-300 text-xs sm:text-sm font-medium uppercase tracking-wider mt-2">Sq.Ft. Area Developed</p>
+                </div>
+
+                <!-- Stat 2 -->
+                <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 sm:p-8 text-center hover:border-gold-500/40 transition reveal">
+                    <div class="w-12 h-12 mx-auto rounded-xl bg-gold-500/15 text-gold-400 flex items-center justify-center mb-4">
+                        <i data-lucide="building-2" class="w-6 h-6"></i>
+                    </div>
+                    <div class="font-display font-extrabold text-3xl sm:text-5xl text-white">
+                        <span class="counter" data-target="400">0</span><span class="text-gold-400">+</span>
+                    </div>
+                    <p class="text-gray-300 text-xs sm:text-sm font-medium uppercase tracking-wider mt-2">Happy Enterprise Clients</p>
+                </div>
+
+                <!-- Stat 3 -->
+                <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 sm:p-8 text-center hover:border-gold-500/40 transition reveal">
+                    <div class="w-12 h-12 mx-auto rounded-xl bg-gold-500/15 text-gold-400 flex items-center justify-center mb-4">
+                        <i data-lucide="check-square" class="w-6 h-6"></i>
+                    </div>
+                    <div class="font-display font-extrabold text-3xl sm:text-5xl text-white">
+                        <span class="counter" data-target="500">0</span><span class="text-gold-400">+</span>
+                    </div>
+                    <p class="text-gray-300 text-xs sm:text-sm font-medium uppercase tracking-wider mt-2">Delivered Projects</p>
+                </div>
+
+                <!-- Stat 4 -->
+                <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 sm:p-8 text-center hover:border-gold-500/40 transition reveal">
+                    <div class="w-12 h-12 mx-auto rounded-xl bg-gold-500/15 text-gold-400 flex items-center justify-center mb-4">
+                        <i data-lucide="users" class="w-6 h-6"></i>
+                    </div>
+                    <div class="font-display font-extrabold text-3xl sm:text-5xl text-white">
+                        <span class="counter" data-target="300">0</span><span class="text-gold-400">+</span>
+                    </div>
+                    <p class="text-gray-300 text-xs sm:text-sm font-medium uppercase tracking-wider mt-2">Design & Engineering Experts</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================================
+         8. CLIENTELE SHOWCASE & "CLIENT SPEAK" TESTIMONIALS CAROUSEL
+    ====================================================================== -->
+    <section id="clients" class="py-24 bg-gray-50 border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Clientele Logo Wall -->
+            <div class="text-center max-w-3xl mx-auto mb-14 reveal">
+                <div class="inline-flex items-center gap-2 text-gold-600 font-display font-bold text-xs uppercase tracking-[0.2em] mb-3">
+                    <span class="w-6 h-[2px] bg-gold-500"></span>
+                    Trusted By Industry Leaders
+                    <span class="w-6 h-[2px] bg-gold-500"></span>
+                </div>
+                <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-charcoal-900">
+                    Enterprise Clientele Across Sectors
+                </h2>
+            </div>
+
+            <!-- Architectural Client Logo Badges -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-24 reveal">
+                <div class="bg-white border border-gray-200/80 rounded-2xl p-6 flex flex-col items-center justify-center text-center hover:border-gold-500/50 hover:shadow-md transition">
+                    <i data-lucide="heart-pulse" class="w-7 h-7 text-charcoal-800 mb-2"></i>
+                    <span class="font-display font-extrabold text-sm tracking-tight text-charcoal-900">MEDANTA</span>
+                    <span class="text-[10px] text-gray-400 uppercase tracking-wider mt-0.5">Healthcare</span>
+                </div>
+                <div class="bg-white border border-gray-200/80 rounded-2xl p-6 flex flex-col items-center justify-center text-center hover:border-gold-500/50 hover:shadow-md transition">
+                    <i data-lucide="globe" class="w-7 h-7 text-charcoal-800 mb-2"></i>
+                    <span class="font-display font-extrabold text-sm tracking-tight text-charcoal-900">NORDIC MISSION</span>
+                    <span class="text-[10px] text-gray-400 uppercase tracking-wider mt-0.5">Diplomatic</span>
+                </div>
+                <div class="bg-white border border-gray-200/80 rounded-2xl p-6 flex flex-col items-center justify-center text-center hover:border-gold-500/50 hover:shadow-md transition">
+                    <i data-lucide="shopping-bag" class="w-7 h-7 text-charcoal-800 mb-2"></i>
+                    <span class="font-display font-extrabold text-sm tracking-tight text-charcoal-900">LUXE RETAIL</span>
+                    <span class="text-[10px] text-gray-400 uppercase tracking-wider mt-0.5">Global Retail</span>
+                </div>
+                <div class="bg-white border border-gray-200/80 rounded-2xl p-6 flex flex-col items-center justify-center text-center hover:border-gold-500/50 hover:shadow-md transition">
+                    <i data-lucide="server" class="w-7 h-7 text-charcoal-800 mb-2"></i>
+                    <span class="font-display font-extrabold text-sm tracking-tight text-charcoal-900">NEXUS CLOUD</span>
+                    <span class="text-[10px] text-gray-400 uppercase tracking-wider mt-0.5">IT & Tech</span>
+                </div>
+                <div class="bg-white border border-gray-200/80 rounded-2xl p-6 flex flex-col items-center justify-center text-center hover:border-gold-500/50 hover:shadow-md transition">
+                    <i data-lucide="landmark" class="w-7 h-7 text-charcoal-800 mb-2"></i>
+                    <span class="font-display font-extrabold text-sm tracking-tight text-charcoal-900">AURELIA BANK</span>
+                    <span class="text-[10px] text-gray-400 uppercase tracking-wider mt-0.5">BFSI</span>
+                </div>
+                <div class="bg-white border border-gray-200/80 rounded-2xl p-6 flex flex-col items-center justify-center text-center hover:border-gold-500/50 hover:shadow-md transition">
+                    <i data-lucide="plane" class="w-7 h-7 text-charcoal-800 mb-2"></i>
+                    <span class="font-display font-extrabold text-sm tracking-tight text-charcoal-900">AERO DYNAMICS</span>
+                    <span class="text-[10px] text-gray-400 uppercase tracking-wider mt-0.5">Enterprise</span>
+                </div>
+            </div>
+
+            <!-- "Client Speak" Testimonials Carousel -->
+            <div id="testimonials" class="scroll-mt-28 reveal">
+                <div class="bg-charcoal-900 rounded-3xl p-8 sm:p-12 lg:p-16 text-white relative overflow-hidden shadow-2xl">
+                    <div class="absolute top-0 right-0 w-72 h-72 bg-gold-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                    <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-10 border-b border-white/10 pb-8">
+                        <div>
+                            <span class="text-gold-400 font-display font-bold text-xs uppercase tracking-[0.2em]">Client Speak</span>
+                            <h3 class="font-display font-extrabold text-2xl sm:text-3xl text-white mt-1">Executive Endorsements</h3>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <button onclick="prevTestimonial()" aria-label="Previous Testimonial" class="p-3 rounded-xl bg-white/10 hover:bg-gold-500 hover:text-charcoal-950 transition cursor-pointer">
+                                <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                            </button>
+                            <button onclick="nextTestimonial()" aria-label="Next Testimonial" class="p-3 rounded-xl bg-white/10 hover:bg-gold-500 hover:text-charcoal-950 transition cursor-pointer">
+                                <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial Content Container -->
+                    <div id="testimonial-display" class="transition-opacity duration-300">
+                        <div class="grid lg:grid-cols-12 gap-8 items-center">
+                            <div class="lg:col-span-8">
+                                <i data-lucide="quote" class="w-10 h-10 text-gold-500/40 mb-4"></i>
+                                <blockquote id="testi-quote" class="font-display text-xl sm:text-2xl lg:text-[26px] font-medium text-gray-100 leading-relaxed mb-8">
+                                    "Atelier Verve executed our 65,000 sq.ft. clinical & corporate administrative wing with extraordinary discipline. Their in-house MEP and acoustic teams delivered a turnkey facility in just 72 days without a single safety incident."
+                                </blockquote>
+                                <div class="flex items-center gap-4">
+                                    <div class="w-12 h-12 rounded-full bg-gold-500 text-charcoal-950 font-display font-extrabold flex items-center justify-center text-lg" id="testi-initials">
+                                        RK
+                                    </div>
+                                    <div>
+                                        <p class="font-display font-bold text-base text-white" id="testi-author">Dr. Rajeshwar Kapoor</p>
+                                        <p class="text-xs text-gray-400" id="testi-role">VP – Infrastructure & Projects, Apex Healthcare Group</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="lg:col-span-4 bg-white/5 border border-white/10 rounded-2xl p-6">
+                                <span class="inline-block px-3 py-1 rounded-full bg-gold-500/20 text-gold-400 font-bold text-xs uppercase tracking-wider mb-3" id="testi-badge">
+                                    Delivered in 72 Days
+                                </span>
+                                <h4 class="font-display font-bold text-lg text-white mb-2" id="testi-project">Healthcare Command Hub</h4>
+                                <p class="text-xs text-gray-400 leading-relaxed mb-4" id="testi-meta">
+                                    Scope: Turnkey Interior Architecture, Cleanroom-grade HVAC, Medical Gas Piping & Acoustic Glazing • Gurugram, NCR
+                                </p>
+                                <div class="flex items-center gap-1 text-gold-400">
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================================
+         9. ISO & SAFETY CERTIFICATIONS STRIP
+    ====================================================================== -->
+    <section id="certifications" class="py-16 bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-8 reveal">
+                <div class="text-center lg:text-left max-w-sm">
+                    <span class="text-gold-600 font-display font-bold text-xs uppercase tracking-[0.2em]">Global Benchmarks</span>
+                    <h3 class="font-display font-extrabold text-2xl text-charcoal-900 mt-1">ISO & Safety Accredited</h3>
+                    <p class="text-xs text-gray-500 mt-1">Audited systems guaranteeing quality, sustainability & occupational safety.</p>
+                </div>
+
+                <div class="grid sm:grid-cols-3 gap-5 w-full lg:w-auto flex-1">
+                    <!-- ISO 9001 -->
+                    <div class="flex items-center gap-4 p-5 rounded-2xl bg-gray-50 border border-gray-200 hover:border-gold-500 transition">
+                        <div class="w-12 h-12 rounded-xl bg-charcoal-900 text-gold-400 flex items-center justify-center shrink-0">
+                            <i data-lucide="badge-check" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <p class="font-display font-extrabold text-base text-charcoal-900">ISO 9001:2015</p>
+                            <p class="text-xs text-gray-500">Quality Management System</p>
+                        </div>
+                    </div>
+
+                    <!-- ISO 14001 -->
+                    <div class="flex items-center gap-4 p-5 rounded-2xl bg-gray-50 border border-gray-200 hover:border-gold-500 transition">
+                        <div class="w-12 h-12 rounded-xl bg-charcoal-900 text-gold-400 flex items-center justify-center shrink-0">
+                            <i data-lucide="leaf" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <p class="font-display font-extrabold text-base text-charcoal-900">ISO 14001:2015</p>
+                            <p class="text-xs text-gray-500">Environmental Management System</p>
+                        </div>
+                    </div>
+
+                    <!-- ISO 45001 -->
+                    <div class="flex items-center gap-4 p-5 rounded-2xl bg-gray-50 border border-gray-200 hover:border-gold-500 transition">
+                        <div class="w-12 h-12 rounded-xl bg-charcoal-900 text-gold-400 flex items-center justify-center shrink-0">
+                            <i data-lucide="hard-hat" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <p class="font-display font-extrabold text-base text-charcoal-900">ISO 45001:2018</p>
+                            <p class="text-xs text-gray-500">Occupational Health & Safety</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================================
+         10. "LET'S HEAR FROM YOU!" CTA BANNER & CORPORATE FOOTER
+    ====================================================================== -->
+    <section id="contact" class="py-24 bg-charcoal-900 text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-arch-grid-dark bg-grid-40 pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="bg-gradient-to-br from-charcoal-800 to-charcoal-950 border border-white/10 rounded-3xl p-8 sm:p-12 lg:p-16 shadow-2xl reveal">
+                <div class="grid lg:grid-cols-12 gap-12 items-center">
+                    <!-- Left Callout -->
+                    <div class="lg:col-span-6">
+                        <div class="inline-flex items-center gap-2 text-gold-400 font-display font-bold text-xs uppercase tracking-[0.2em] mb-4">
+                            <span class="w-8 h-[2px] bg-gold-500"></span>
+                            Let's Hear From You!
+                        </div>
+                        <h2 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight mb-5">
+                            Ready to take your workspace a step further?
+                        </h2>
+                        <p class="text-gray-300 text-base sm:text-lg leading-relaxed mb-8">
+                            Let’s talk about your project. Whether you are planning a 15,000 sq.ft. boutique executive suite or a 500,000 sq.ft. corporate campus, our directors will prepare a tailored feasibility and turnkey roadmap.
+                        </p>
+
+                        <div class="space-y-4 text-sm text-gray-300">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-gold-500/15 text-gold-400 flex items-center justify-center shrink-0">
+                                    <i data-lucide="phone-call" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-400">Direct Enterprise Desk</p>
+                                    <p class="font-semibold text-white">+91 (11) 4167-8900 / +91 98110-45210</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-gold-500/15 text-gold-400 flex items-center justify-center shrink-0">
+                                    <i data-lucide="mail" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-400">RFPs & Tender Inquiries</p>
+                                    <p class="font-semibold text-white">projects@atelierverve.in</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Interactive Inquiry Form -->
+                    <div class="lg:col-span-6">
+                        <form id="footer-inquiry-form" onsubmit="handleInquirySubmit(event, 'footer-form-feedback')" class="bg-charcoal-950/90 border border-white/10 rounded-2xl p-6 sm:p-8 space-y-4">
+                            <h3 class="font-display font-bold text-xl text-white mb-2">Request a Turnkey Proposal</h3>
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-medium text-gray-400 mb-1.5">Full Name *</label>
+                                    <input type="text" required placeholder="e.g. Vikramaditya Sen" class="w-full px-4 py-3 rounded-xl bg-charcoal-900 border border-white/15 text-white text-sm focus:outline-none focus:border-gold-500">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-gray-400 mb-1.5">Corporate Email *</label>
+                                    <input type="email" required placeholder="name@company.com" class="w-full px-4 py-3 rounded-xl bg-charcoal-900 border border-white/15 text-white text-sm focus:outline-none focus:border-gold-500">
+                                </div>
+                            </div>
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-medium text-gray-400 mb-1.5">Company / Organization</label>
+                                    <input type="text" placeholder="Enterprise Name" class="w-full px-4 py-3 rounded-xl bg-charcoal-900 border border-white/15 text-white text-sm focus:outline-none focus:border-gold-500">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-gray-400 mb-1.5">Project Scope</label>
+                                    <select class="w-full px-4 py-3 rounded-xl bg-charcoal-900 border border-white/15 text-white text-sm focus:outline-none focus:border-gold-500">
+                                        <option>Design & Build (Turnkey)</option>
+                                        <option>General Contracting</option>
+                                        <option>MEP Engineering Services</option>
+                                        <option>Multimedia & Smart AV</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-gray-400 mb-1.5">Project Location & Approx. Area (Sq.Ft.)</label>
+                                <textarea rows="3" required placeholder="e.g. 45,000 Sq.Ft. Corporate Office in Gurugram / BKC Mumbai..." class="w-full px-4 py-3 rounded-xl bg-charcoal-900 border border-white/15 text-white text-sm focus:outline-none focus:border-gold-500"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-gold-500 hover:bg-gold-400 text-charcoal-950 font-display font-bold text-sm py-3.5 rounded-xl shadow-lg shadow-gold-500/20 transition cursor-pointer">
+                                Submit Project Inquiry
+                            </button>
+                            <div id="footer-form-feedback" class="hidden text-xs text-emerald-400 bg-emerald-950/60 border border-emerald-500/30 rounded-xl p-3 text-center"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comprehensive Corporate Footer -->
+    <footer class="bg-charcoal-950 text-gray-400 border-t border-white/10 pt-16 pb-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-white/10">
+                <!-- Col 1: Brand -->
+                <div class="lg:col-span-4">
+                    <a href="#home" class="flex items-center gap-3 mb-5">
+                        <div class="w-10 h-10 rounded-lg bg-gold-500 flex items-center justify-center text-charcoal-950 font-display font-extrabold text-lg">
+                            AV
+                        </div>
+                        <span class="font-display font-extrabold text-xl tracking-wider text-white">ATELIER <span class="text-gold-500">VERVE</span></span>
+                    </a>
+                    <p class="text-sm text-gray-400 leading-relaxed mb-6">
+                        Premier corporate interior architecture, general contracting, and turnkey design-build specialists delivering iconic workspaces across India.
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <a href="#contact" aria-label="LinkedIn" class="w-10 h-10 rounded-xl bg-white/5 hover:bg-gold-500 hover:text-charcoal-950 flex items-center justify-center transition">
+                            <i data-lucide="linkedin" class="w-4 h-4"></i>
+                        </a>
+                        <a href="#contact" aria-label="Instagram" class="w-10 h-10 rounded-xl bg-white/5 hover:bg-gold-500 hover:text-charcoal-950 flex items-center justify-center transition">
+                            <i data-lucide="instagram" class="w-4 h-4"></i>
+                        </a>
+                        <a href="#contact" aria-label="Twitter" class="w-10 h-10 rounded-xl bg-white/5 hover:bg-gold-500 hover:text-charcoal-950 flex items-center justify-center transition">
+                            <i data-lucide="twitter" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Col 2: Head Office -->
+                <div class="lg:col-span-3">
+                    <h4 class="font-display font-bold text-white text-sm uppercase tracking-wider mb-4">Head Office (New Delhi)</h4>
+                    <p class="text-sm text-gray-400 leading-relaxed mb-3">
+                        Plot B-14, Block B-1,<br>
+                        Mohan Cooperative Industrial Estate,<br>
+                        Mathura Road, New Delhi – 110044, India
+                    </p>
+                    <p class="text-xs text-gold-400 font-medium">+91 (11) 4167-8900</p>
+                </div>
+
+                <!-- Col 3: Regional Hubs -->
+                <div class="lg:col-span-3">
+                    <h4 class="font-display font-bold text-white text-sm uppercase tracking-wider mb-4">Regional Hubs</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li>
+                            <strong class="text-gray-200">Mumbai:</strong> One BKC, Bandra Kurla Complex, Mumbai – 400051
+                        </li>
+                        <li>
+                            <strong class="text-gray-200">Bengaluru:</strong> Prestige Trade Tower, Palace Road, Bengaluru – 560001
+                        </li>
+                        <li>
+                            <strong class="text-gray-200">Chennai:</strong> Olympia Tech Park, Guindy, Chennai – 600032
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Quick Links -->
+                <div class="lg:col-span-2">
+                    <h4 class="font-display font-bold text-white text-sm uppercase tracking-wider mb-4">Navigation</h4>
+                    <ul class="space-y-2.5 text-sm">
+                        <li><a href="#about" class="hover:text-gold-400 transition">About Firm</a></li>
+                        <li><a href="#why-us" class="hover:text-gold-400 transition">Why Choose Us</a></li>
+                        <li><a href="#services" class="hover:text-gold-400 transition">Turnkey Services</a></li>
+                        <li><a href="#projects" class="hover:text-gold-400 transition">Project Portfolio</a></li>
+                        <li><a href="#certifications" class="hover:text-gold-400 transition">ISO Accreditations</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
+                <p>&copy; 2026 Atelier Verve Design & Build Pvt. Ltd. All Rights Reserved.</p>
+                <div class="flex items-center gap-6">
+                    <a href="#certifications" class="hover:text-gray-300">Safety Policy</a>
+                    <a href="#certifications" class="hover:text-gray-300">Quality Charter</a>
+                    <a href="#contact" class="hover:text-gray-300">Vendor Registration</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- =====================================================================
+         INTERACTIVE MODALS (START A PROJECT / WHY US PILLARS / PROJECT LIGHTBOX)
+    ====================================================================== -->
+
+    <!-- 1. Start a Project / Consultation Modal -->
+    <div id="quote-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-charcoal-950/80 backdrop-blur-sm p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-gray-200 relative animate-[fadeIn_0.2s_ease-out]">
+            <button onclick="closeQuoteModal()" aria-label="Close Modal" class="absolute top-5 right-5 p-2 rounded-xl bg-gray-100 hover:bg-gray-200 text-charcoal-900 transition cursor-pointer">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <span class="text-gold-600 font-display font-bold text-xs uppercase tracking-widest">Executive Consultation</span>
+            <h3 class="font-display font-extrabold text-2xl text-charcoal-900 mt-1 mb-2">Start Your Project</h3>
+            <p class="text-xs text-gray-500 mb-6">Share your workspace requirements and our Principal Architect will connect within 24 business hours.</p>
+
+            <form onsubmit="handleInquirySubmit(event, 'modal-form-feedback')" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-charcoal-900 mb-1">Your Name *</label>
+                    <input type="text" required placeholder="Full Name" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:border-gold-500">
+                </div>
+                <div class="grid sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-semibold text-charcoal-900 mb-1">Work Email *</label>
+                        <input type="email" required placeholder="you@enterprise.com" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:border-gold-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-charcoal-900 mb-1">Phone Number *</label>
+                        <input type="tel" required placeholder="+91 98XXX XXXXX" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:border-gold-500">
+                    </div>
+                </div>
+                <div class="grid sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-semibold text-charcoal-900 mb-1">City</label>
+                        <select class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:border-gold-500">
+                            <option>New Delhi / NCR</option>
+                            <option>Mumbai</option>
+                            <option>Bengaluru</option>
+                            <option>Chennai</option>
+                            <option>Hyderabad / Pune / Other</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-charcoal-900 mb-1">Estimated Area</label>
+                        <select class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:border-gold-500">
+                            <option>10,000 – 25,000 Sq.Ft.</option>
+                            <option>25,000 – 75,000 Sq.Ft.</option>
+                            <option>75,000 – 200,000 Sq.Ft.</option>
+                            <option>200,000+ Sq.Ft. Campus</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-charcoal-900 mb-1">Brief Scope</label>
+                    <textarea rows="2" placeholder="Tell us about timelines, fit-out type, or design goals..." class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:border-gold-500"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-charcoal-900 hover:bg-gold-500 hover:text-charcoal-950 text-white font-display font-bold text-sm py-3.5 rounded-xl transition cursor-pointer">
+                    Request Callback & Portfolio Deck
+                </button>
+                <div id="modal-form-feedback" class="hidden text-xs text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-xl p-3 text-center"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 2. Why Us Pillar Details Modal -->
+    <div id="pillar-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-charcoal-950/80 backdrop-blur-sm p-4">
+        <div class="bg-charcoal-900 text-white rounded-3xl max-w-xl w-full p-7 sm:p-9 shadow-2xl border border-white/15 relative">
+            <button onclick="closePillarModal()" aria-label="Close Pillar Modal" class="absolute top-5 right-5 p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white transition cursor-pointer">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <span id="pillar-modal-tag" class="text-gold-400 font-mono text-xs uppercase tracking-widest">01 / Differentiation</span>
+            <h3 id="pillar-modal-title" class="font-display font-extrabold text-2xl sm:text-3xl text-white mt-1 mb-4">Why Choose Us</h3>
+            <p id="pillar-modal-desc" class="text-gray-300 text-sm sm:text-base leading-relaxed mb-6"></p>
+            <ul id="pillar-modal-points" class="space-y-3 text-sm text-gray-200 mb-6"></ul>
+            <button onclick="closePillarModal(); openQuoteModal();" class="w-full bg-gold-500 hover:bg-gold-400 text-charcoal-950 font-display font-bold text-sm py-3 rounded-xl transition cursor-pointer">
+                Discuss Your Project With Our Team
+            </button>
+        </div>
+    </div>
+
+    <!-- 3. Project Lightbox Modal -->
+    <div id="project-lightbox" class="fixed inset-0 z-50 hidden items-center justify-center bg-charcoal-950/90 backdrop-blur-md p-4">
+        <div class="bg-white rounded-3xl max-w-3xl w-full overflow-hidden shadow-2xl relative">
+            <button onclick="closeLightbox()" aria-label="Close Lightbox" class="absolute top-4 right-4 z-10 p-2.5 rounded-xl bg-charcoal-900/80 hover:bg-gold-500 text-white hover:text-charcoal-950 transition cursor-pointer">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <img id="lb-img" src="" alt="Project Preview" class="w-full h-72 sm:h-96 object-cover">
+            <div class="p-6 sm:p-8">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                    <span id="lb-category" class="px-3 py-1 rounded-full bg-gold-500/15 text-gold-600 font-bold text-xs uppercase tracking-wider">Corporate Office</span>
+                    <span id="lb-metrics" class="text-xs font-mono font-semibold text-charcoal-800">85,000 Sq.Ft. • Gurugram</span>
+                </div>
+                <h3 id="lb-title" class="font-display font-extrabold text-2xl text-charcoal-900 mb-2">Project Title</h3>
+                <p id="lb-desc" class="text-gray-600 text-sm leading-relaxed mb-6">Project description goes here.</p>
+                <div class="flex justify-end">
+                    <button onclick="closeLightbox(); openQuoteModal();" class="inline-flex items-center gap-2 bg-charcoal-900 hover:bg-gold-500 hover:text-charcoal-950 text-white font-display font-bold text-xs uppercase tracking-wider px-5 py-3 rounded-xl transition cursor-pointer">
+                        <span>Inquire About Similar Fit-Out</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =====================================================================
+         JAVASCRIPT LOGIC (CAROUSELS, FILTERS, COUNTERS, MODALS)
+    ====================================================================== -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        /* -------------------------------------------------------------------
+           1. MOBILE DRAWER & STICKY HEADER
+        ------------------------------------------------------------------- */
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileDrawer = document.getElementById('mobile-drawer');
+
+        function toggleMobileDrawer() {
+            mobileDrawer.classList.toggle('hidden');
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMobileDrawer);
+
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileDrawer.classList.add('hidden');
+            });
+        });
+
+        /* -------------------------------------------------------------------
+           2. HERO CAROUSEL SLIDER
+        ------------------------------------------------------------------- */
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.hero-slide');
+        const dots = document.querySelectorAll('.slide-dot');
+        const slideCounter = document.getElementById('slide-counter');
+        let isAutoplay = true;
+        let slideInterval = setInterval(nextSlide, 6500);
+
+        function updateHeroSlider() {
+            slides.forEach((slide, idx) => {
+                if (idx === currentSlide) {
+                    slide.classList.remove('hero-slide-inactive');
+                    slide.classList.add('hero-slide-active');
+                } else {
+                    slide.classList.remove('hero-slide-active');
+                    slide.classList.add('hero-slide-inactive');
+                }
+            });
+
+            dots.forEach((dot, idx) => {
+                if (idx === currentSlide) {
+                    dot.classList.remove('w-6', 'bg-white/30');
+                    dot.classList.add('w-12', 'bg-gold-500');
+                } else {
+                    dot.classList.remove('w-12', 'bg-gold-500');
+                    dot.classList.add('w-6', 'bg-white/30');
+                }
+            });
+
+            slideCounter.textContent = `0${currentSlide + 1} / 0${slides.length}`;
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            updateHeroSlider();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            updateHeroSlider();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateHeroSlider();
+        }
+
+        function toggleAutoplay() {
+            const icon = document.getElementById('autoplay-icon');
+            if (isAutoplay) {
+                clearInterval(slideInterval);
+                isAutoplay = false;
+                icon.setAttribute('data-lucide', 'play');
+            } else {
+                slideInterval = setInterval(nextSlide, 6500);
+                isAutoplay = true;
+                icon.setAttribute('data-lucide', 'pause');
+            }
+            lucide.createIcons();
+        }
+
+        /* -------------------------------------------------------------------
+           3. WHY US PILLARS MODAL DATA
+        ------------------------------------------------------------------- */
+        const pillarData = {
+            choose: {
+                tag: '01 / Differentiation',
+                title: 'Why Choose Atelier Verve',
+                desc: 'We eliminate the friction between design studios and general contractors by housing architects, BIM coordinators, MEP specialists, and procurement engineers under one accountable leadership structure.',
+                points: [
+                    'Single-point responsibility from space programming to final snag-free handover.',
+                    'In-house modular joinery & custom millwork partnerships for superior finish consistency.',
+                    'Real-time digital project tracking dashboards for client stakeholders.',
+                    'Proven track record of 98.4% on-time project completion across 20M+ Sq.Ft.'
+                ]
+            },
+            vision: {
+                tag: '02 / Vision & Mission',
+                title: 'Our Vision & Corporate Mission',
+                desc: 'To be South Asia’s most trusted architectural Design & Build partner—setting global benchmarks in spatial innovation, engineering precision, and ethical business governance.',
+                points: [
+                    'Translate organizational culture into inspiring, high-productivity work environments.',
+                    'Champion sustainable material selection and energy-efficient building systems.',
+                    'Maintain 100% open-book transparency in BOQs, value engineering, and timelines.'
+                ]
+            },
+            values: {
+                tag: '03 / Core Values',
+                title: 'Our Guiding Core Values',
+                desc: 'Every site we manage operates on non-negotiable standards of human safety, environmental stewardship, and agile problem-solving.',
+                points: [
+                    'Safety First: Strict adherence to ISO 45001:2018 zero-harm site protocols.',
+                    'Agile Collaboration: Rapid adaptation to evolving client operational needs.',
+                    'Craftsmanship Obsession: Rigorous 140-point quality inspection checklist prior to handover.'
+                ]
+            }
+        };
+
+        function openPillarModal(key) {
+            const data = pillarData[key];
+            document.getElementById('pillar-modal-tag').textContent = data.tag;
+            document.getElementById('pillar-modal-title').textContent = data.title;
+            document.getElementById('pillar-modal-desc').textContent = data.desc;
+
+            const list = document.getElementById('pillar-modal-points');
+            list.innerHTML = data.points.map(pt => `
+                <li class="flex items-start gap-2.5">
+                    <i data-lucide="check-circle-2" class="w-5 h-5 text-gold-400 shrink-0 mt-0.5"></i>
+                    <span>${pt}</span>
+                </li>
+            `).join('');
+
+            const modal = document.getElementById('pillar-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            lucide.createIcons();
+        }
+
+        function closePillarModal() {
+            const modal = document.getElementById('pillar-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        /* -------------------------------------------------------------------
+           4. CORE SERVICES INTERACTIVE TABS
+        ------------------------------------------------------------------- */
+        const servicesData = [
+            {
+                badge: 'Turnkey Design & Build',
+                title: 'Integrated Design & Build Delivery',
+                desc: 'Our Design & Build model unifies architectural creativity, workplace strategy, value engineering, and on-site construction under a single contract—compressing project schedules by up to 30% while guaranteeing budget certainty.',
+                bullets: [
+                    'Workplace Strategy & Space Planning',
+                    '3D Visualization, VR Walkthroughs & BIM',
+                    'Bespoke Millwork & Furniture Curation',
+                    'LEED & WELL Certification Advisory'
+                ],
+                img: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1000&q=85',
+                metricLabel: 'Average Schedule Compression',
+                metricValue: 'Up to 30% Faster Handover'
+            },
+            {
+                badge: 'Precision Execution',
+                title: 'General Contracting & Civil Fit-Outs',
+                desc: 'Partnering with leading international architects and PMCs, our General Contracting division executes complex interior blueprints with military-grade site discipline, micro-level scheduling, and superior finish quality.',
+                bullets: [
+                    'Structural Civil, Drywall & Acoustic Partitions',
+                    'Imported Stone, Metalwork & Architectural Glass',
+                    'Strict QA/QC Audits & Snag-Free Handover',
+                    'Dedicated EHS (Environment, Health & Safety) Officers'
+                ],
+                img: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1000&q=85',
+                metricLabel: 'Quality Assurance Standard',
+                metricValue: '140-Point Inspection Protocol'
+            },
+            {
+                badge: 'In-House Engineering',
+                title: 'Mechanical, Electrical & Plumbing (MEP)',
+                desc: 'Our dedicated MEP engineers design, procure, and commission high-efficiency active and passive building services tailored for mission-critical corporate campuses, data hubs, and healthcare centers.',
+                bullets: [
+                    'VRV/VRF & Chilled Water HVAC Systems',
+                    'HT/LT Electrical Panels, UPS & Busbar Trunking',
+                    'Fire Detection, Suppression & PA Systems',
+                    'Energy Monitoring & BMS Integration'
+                ],
+                img: 'https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=1000&q=85',
+                metricLabel: 'Energy Optimization',
+                metricValue: 'Up to 24% Lower HVAC Load'
+            },
+            {
+                badge: 'Smart Workplaces',
+                title: 'Multimedia, Acoustics & Automation',
+                desc: 'We transform boardrooms, townhalls, and collaborative zones into seamless hybrid ecosystems with enterprise-grade audio-visual architecture, sound masking, and IoT room automation.',
+                bullets: [
+                    'Executive Boardroom Video Conferencing',
+                    'Active LED Walls & Digital Signage',
+                    'Architectural Acoustic Baffles & Sound Masking',
+                    'Automated Lighting & Occupancy Sensors'
+                ],
+                img: 'https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&w=1000&q=85',
+                metricLabel: 'Acoustic Precision',
+                metricValue: 'STC 52+ Sound Isolation'
+            }
+        ];
+
+        function selectService(index) {
+            const srv = servicesData[index];
+
+            // Update card active styles
+            document.querySelectorAll('.service-tab-card').forEach((card, idx) => {
+                const iconBox = card.querySelector('div');
+                const desc = card.querySelector('p');
+                if (idx === index) {
+                    card.className = 'service-tab-card text-left p-6 rounded-2xl bg-charcoal-900 text-white border-2 border-gold-500 shadow-xl transition-all cursor-pointer';
+                    iconBox.className = 'w-12 h-12 rounded-xl bg-gold-500 text-charcoal-950 flex items-center justify-center mb-5';
+                    desc.className = 'text-xs text-gray-300 leading-relaxed';
+                } else {
+                    card.className = 'service-tab-card text-left p-6 rounded-2xl bg-white text-charcoal-900 border border-gray-200 hover:border-gold-500/60 shadow-sm hover:shadow-lg transition-all cursor-pointer';
+                    iconBox.className = 'w-12 h-12 rounded-xl bg-gray-100 text-charcoal-900 flex items-center justify-center mb-5';
+                    desc.className = 'text-xs text-gray-500 leading-relaxed';
+                }
+            });
+
+            // Update Detail Panel
+            document.getElementById('srv-badge').textContent = srv.badge;
+            document.getElementById('srv-title').textContent = srv.title;
+            document.getElementById('srv-desc').textContent = srv.desc;
+            document.getElementById('srv-img').src = srv.img;
+            document.getElementById('srv-metric-label').textContent = srv.metricLabel;
+            document.getElementById('srv-metric-value').textContent = srv.metricValue;
+
+            document.getElementById('srv-bullets').innerHTML = srv.bullets.map(b => `
+                <div class="flex items-center gap-2.5 text-sm font-medium text-charcoal-900 bg-gray-50 px-3.5 py-2.5 rounded-xl border border-gray-100">
+                    <i data-lucide="check" class="w-4 h-4 text-gold-600 shrink-0"></i>
+                    <span>${b}</span>
+                </div>
+            `).join('');
+
+            lucide.createIcons();
+        }
+
+        // Initialize default service tab
+        selectService(0);
+
+        /* -------------------------------------------------------------------
+           5. FEATURED PROJECTS PORTFOLIO & FILTERING
+        ------------------------------------------------------------------- */
+        const projectsData = [
+            {
+                id: 1,
+                title: 'Vanguard FinTech India HQ',
+                category: 'corporate',
+                categoryLabel: 'Corporate Offices',
+                area: '140,000 Sq.Ft.',
+                location: 'BKC, Mumbai',
+                img: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=85',
+                desc: 'LEED Platinum certified agile headquarters featuring an internal sculptural staircase, acoustic trading floors, and executive client briefing suites.'
+            },
+            {
+                id: 2,
+                title: 'Apex Specialty Medical Center',
+                category: 'healthcare',
+                categoryLabel: 'Healthcare & Institutional',
+                area: '95,000 Sq.Ft.',
+                location: 'Gurugram, NCR',
+                img: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=900&q=85',
+                desc: 'Turnkey clinical interiors, antimicrobial wall cladding, negative-pressure isolation zones, and patient-centric healing lounges delivered in 72 days.'
+            },
+            {
+                id: 3,
+                title: 'Maison Lumière Flagship Atelier',
+                category: 'retail',
+                categoryLabel: 'Retail & Hospitality',
+                area: '28,000 Sq.Ft.',
+                location: 'Chanakyapuri, New Delhi',
+                img: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=85',
+                desc: 'Double-height luxury retail gallery crafted with book-matched Italian travertine, custom brass lighting rigs, and VIP private viewing salons.'
+            },
+            {
+                id: 4,
+                title: 'Stratos Cloud Innovation Campus',
+                category: 'corporate',
+                categoryLabel: 'Corporate Offices',
+                area: '220,000 Sq.Ft.',
+                location: 'Outer Ring Road, Bengaluru',
+                img: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=900&q=85',
+                desc: 'Multi-floor R&D campus integrating smart IoT lighting, 400-seater townhall auditorium, and biophilic collaborative neighborhoods.'
+            },
+            {
+                id: 5,
+                title: 'Nordic Diplomatic Chancery',
+                category: 'healthcare',
+                categoryLabel: 'Healthcare & Institutional',
+                area: '42,000 Sq.Ft.',
+                location: 'New Delhi',
+                img: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=85',
+                desc: 'High-security diplomatic mission blending Scandinavian timber minimalism with ballistic glazing, acoustic SCIF rooms, and sustainable MEP.'
+            },
+            {
+                id: 6,
+                title: 'The Grand Meridian Executive Club',
+                category: 'retail',
+                categoryLabel: 'Retail & Hospitality',
+                area: '52,000 Sq.Ft.',
+                location: 'Guindy, Chennai',
+                img: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=85',
+                desc: 'Private members business club and fine-dining lounge featuring custom acoustic timber ceilings and automated mood lighting.'
+            }
+        ];
+
+        function renderProjects(filter = 'all') {
+            const grid = document.getElementById('projects-grid');
+            const filtered = filter === 'all' ? projectsData : projectsData.filter(p => p.category === filter);
+
+            grid.innerHTML = filtered.map(proj => `
+                <article onclick="openLightbox(${proj.id})" class="group bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 cursor-pointer flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-64 overflow-hidden bg-charcoal-900">
+                            <img src="${proj.img}"
+                                 onerror="this.src='https://placehold.co/800x600/111827/C59B27?text=${encodeURIComponent(proj.title)}'"
+                                 alt="${proj.title}"
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-charcoal-950/75 via-transparent to-transparent"></div>
+                            <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-charcoal-950/80 backdrop-blur-md text-gold-400 text-[11px] font-bold uppercase tracking-wider border border-white/10">
+                                ${proj.categoryLabel}
+                            </span>
+                            <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white text-xs font-medium">
+                                <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-gold-400"></i> ${proj.location}</span>
+                                <span class="font-mono bg-white/15 px-2.5 py-0.5 rounded-md backdrop-blur-sm">${proj.area}</span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-display font-bold text-xl text-charcoal-900 group-hover:text-gold-600 transition-colors mb-2">${proj.title}</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed line-clamp-2">${proj.desc}</p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-2 flex items-center justify-between text-xs font-display font-bold text-charcoal-900">
+                        <span class="group-hover:text-gold-600 transition">Inspect Case Study</span>
+                        <span class="w-8 h-8 rounded-full bg-gray-100 group-hover:bg-gold-500 group-hover:text-charcoal-950 flex items-center justify-center transition">
+                            <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                        </span>
+                    </div>
+                </article>
+            `).join('');
+
+            lucide.createIcons();
+        }
+
+        function filterProjects(category) {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                if (btn.getAttribute('data-filter') === category) {
+                    btn.className = 'filter-btn active px-4 py-2.5 rounded-xl text-xs font-display font-bold uppercase tracking-wider bg-charcoal-900 text-white transition cursor-pointer';
+                } else {
+                    btn.className = 'filter-btn px-4 py-2.5 rounded-xl text-xs font-display font-bold uppercase tracking-wider bg-gray-100 text-gray-700 hover:bg-gray-200 transition cursor-pointer';
+                }
+            });
+            renderProjects(category);
+        }
+
+        renderProjects('all');
+
+        function openLightbox(projectId) {
+            const proj = projectsData.find(p => p.id === projectId);
+            if (!proj) return;
+            document.getElementById('lb-img').src = proj.img;
+            document.getElementById('lb-category').textContent = proj.categoryLabel;
+            document.getElementById('lb-metrics').textContent = `${proj.area} • ${proj.location}`;
+            document.getElementById('lb-title').textContent = proj.title;
+            document.getElementById('lb-desc').textContent = proj.desc;
+
+            const lb = document.getElementById('project-lightbox');
+            lb.classList.remove('hidden');
+            lb.classList.add('flex');
+        }
+
+        function closeLightbox() {
+            const lb = document.getElementById('project-lightbox');
+            lb.classList.add('hidden');
+            lb.classList.remove('flex');
+        }
+
+        /* -------------------------------------------------------------------
+           6. TESTIMONIALS CAROUSEL
+        ------------------------------------------------------------------- */
+        const testimonialsData = [
+            {
+                quote: '"Atelier Verve executed our 65,000 sq.ft. clinical & corporate administrative wing with extraordinary discipline. Their in-house MEP and acoustic teams delivered a turnkey facility in just 72 days without a single safety incident."',
+                initials: 'RK',
+                author: 'Dr. Rajeshwar Kapoor',
+                role: 'VP – Infrastructure & Projects, Apex Healthcare Group',
+                badge: 'Delivered in 72 Days',
+                project: 'Healthcare Command Hub',
+                meta: 'Scope: Turnkey Interior Architecture, Cleanroom-grade HVAC, Medical Gas Piping & Acoustic Glazing • Gurugram, NCR'
+            },
+            {
+                quote: '"Security, acoustic privacy, and Nordic sustainability benchmarks were non-negotiable for our diplomatic mission. Atelier Verve’s engineering transparency and millwork finesse exceeded every international audit."',
+                initials: 'HL',
+                author: 'Henrik Lindqvist',
+                role: 'Head of Estates & Operations, Nordic Diplomatic Mission',
+                badge: 'LEED Gold Standard',
+                project: 'Diplomatic Chancery & Consular Wing',
+                meta: 'Scope: General Contracting, Ballistic Glazing, Custom Timber Joinery & Smart BMS • Chanakyapuri, New Delhi'
+            },
+            {
+                quote: '"Scaling across three cities simultaneously requires a partner with deep execution muscle. Atelier Verve handed over 140,000 sq.ft. in BKC ahead of our fiscal launch with zero budget variance."',
+                initials: 'SM',
+                author: 'Siddharth Malhotra',
+                role: 'Director – Workplace & Real Estate, Vanguard FinTech',
+                badge: 'Zero Cost Overrun',
+                project: 'Vanguard India Headquarters',
+                meta: 'Scope: End-to-End Design & Build, Trading Floor Acoustics, UPS & Enterprise AV • Mumbai'
+            }
+        ];
+
+        let currentTestimonial = 0;
+
+        function updateTestimonial() {
+            const t = testimonialsData[currentTestimonial];
+            const container = document.getElementById('testimonial-display');
+            container.style.opacity = '0';
+
+            setTimeout(() => {
+                document.getElementById('testi-quote').textContent = t.quote;
+                document.getElementById('testi-initials').textContent = t.initials;
+                document.getElementById('testi-author').textContent = t.author;
+                document.getElementById('testi-role').textContent = t.role;
+                document.getElementById('testi-badge').textContent = t.badge;
+                document.getElementById('testi-project').textContent = t.project;
+                document.getElementById('testi-meta').textContent = t.meta;
+                container.style.opacity = '1';
+            }, 200);
+        }
+
+        function nextTestimonial() {
+            currentTestimonial = (currentTestimonial + 1) % testimonialsData.length;
+            updateTestimonial();
+        }
+
+        function prevTestimonial() {
+            currentTestimonial = (currentTestimonial - 1 + testimonialsData.length) % testimonialsData.length;
+            updateTestimonial();
+        }
+
+        /* -------------------------------------------------------------------
+           7. QUOTE MODAL & FORM SUBMISSION HANDLER
+        ------------------------------------------------------------------- */
+        function openQuoteModal() {
+            const modal = document.getElementById('quote-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeQuoteModal() {
+            const modal = document.getElementById('quote-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function handleInquirySubmit(event, feedbackElementId) {
+            event.preventDefault();
+            const feedback = document.getElementById(feedbackElementId);
+            feedback.textContent = 'Thank you. Your project brief has been assigned to a Regional Director. We will respond within 24 business hours.';
+            feedback.classList.remove('hidden');
+            event.target.reset();
+
+            setTimeout(() => {
+                feedback.classList.add('hidden');
+                if (feedbackElementId === 'modal-form-feedback') {
+                    closeQuoteModal();
+                }
+            }, 4000);
+        }
+
+        // Close modals on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeQuoteModal();
+                closePillarModal();
+                closeLightbox();
+            }
+        });
+
+        /* -------------------------------------------------------------------
+           8. SCROLL REVEAL & ANIMATED MILESTONE COUNTERS
+        ------------------------------------------------------------------- */
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        let countersAnimated = false;
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !countersAnimated) {
+                    countersAnimated = true;
+                    document.querySelectorAll('.counter').forEach(counter => {
+                        const target = +counter.getAttribute('data-target');
+                        const duration = 1800;
+                        const stepTime = 20;
+                        const steps = duration / stepTime;
+                        const increment = target / steps;
+                        let current = 0;
+
+                        const timer = setInterval(() => {
+                            current += increment;
+                            if (current >= target) {
+                                counter.textContent = target;
+                                clearInterval(timer);
+                            } else {
+                                counter.textContent = Math.floor(current);
+                            }
+                        }, stepTime);
+                    });
+                }
+            });
+        }, { threshold: 0.3 });
+
+        const milestonesSection = document.getElementById('milestones');
+        if (milestonesSection) {
+            counterObserver.observe(milestonesSection);
+        }
+    </script>
+</body>
+</html>
